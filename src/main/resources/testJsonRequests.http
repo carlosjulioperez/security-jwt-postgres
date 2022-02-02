@@ -1,0 +1,47 @@
+## Rest Client tests
+
+### Register an user
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "carper",
+  "password": "12345678",
+  "role": ["admin"]
+}
+
+### Access public resource
+GET http://localhost:8080/api/test/all
+Content-Type: application/json
+
+### Access protected resource
+GET http://localhost:8080/api/test/user
+Content-Type: application/json
+
+### Login an account
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+  "username": "tic",
+  "password": "1234"
+}
+
+### Access ADMIN resource
+GET http://localhost:8080/api/test/admin
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWMiLCJpYXQiOjE2NDM4MjI5MzIsImV4cCI6MTY0MzgyMzIzMn0.pnITDf-KZpCII-0GZUyqiYWF8IoDW6QHmdk78WuDeNEBRXD42bcJVDMfvLHuOsaVge2ODb3R96bJkXa1QL2qTQ
+
+
+
+
+
+### Access ROLE_USER resource
+GET http://localhost:8080/api/test/user
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYXJwZXIiLCJpYXQiOjE2NDM2ODc3OTcsImV4cCI6MTY0Mzc3NDE5N30.ELPli411rrMDiZHFw6YA_uhPz0NTh5RsmiwRmEYqNCpK2AVQiwj7eqRSLZ845HeUv7lvUIjjoKmAXELiyP7sJQ
+
+### Access ROLE_MODERATOR resource
+GET http://localhost:8080/api/test/mod
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjYXJwZXIiLCJpYXQiOjE2NDM1MjQzMjMsImV4cCI6MTY0MzYxMDcyM30.UQGteN0qD9FxcZKaqeHbQRMQ5sHM5aZ1ViXMKk6ozd4wwLAbFbkftEY94pAbkjVtqWHMXvJ1ERGoh1KB4l-ADw

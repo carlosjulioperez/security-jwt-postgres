@@ -1,0 +1,20 @@
+# Run cmd: 
+# % docker-compose -f postgressql.yml up -d
+#   Status: Downloaded newer image for postgres:11.5
+#   Creating resources_postgresql_1 ... done
+
+# Run cmd: 
+# % docker exec resources_postgresql_1 psql -U postgres -c"CREATE DATABASE testdb" 
+# % docker exec resources_postgresql_1 psql -U postgres -c"CREATE DATABASE nw" 
+# % docker exec resources_postgresql_1 psql -U postgres -c"DROP DATABASE nw" 
+
+version: '3' 
+services:
+  postgresql:
+    image: postgres:11.5
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123
+    ports:
+      - 5432:5432
+
