@@ -2,17 +2,20 @@ package com.nirsa.security.controller;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.nirsa.security.model.Parametro;
 import com.nirsa.security.model.Role;
 import com.nirsa.security.model.User;
 import com.nirsa.security.payload.request.LoginRequest;
 import com.nirsa.security.payload.request.SignupRequest;
 import com.nirsa.security.payload.response.JwtResponse;
 import com.nirsa.security.payload.response.MessageResponse;
+import com.nirsa.security.repository.ParametroRepository;
 import com.nirsa.security.repository.RoleRepository;
 import com.nirsa.security.repository.UserRepository;
 import com.nirsa.security.security.jwt.JwtUtils;
@@ -45,6 +48,9 @@ public class AuthController {
 	RoleRepository roleRepository;
 
 	@Autowired
+	ParametroRepository parametroRepository;
+
+	@Autowired
 	PasswordEncoder encoder;
 
 	@Autowired
@@ -56,14 +62,19 @@ public class AuthController {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
+		// Buscar el parámetro expiracionMs en la tabla
+		Optional<Parametro> parametro = parametroRepository.findById(1L);
+		int expiracionMs = parametro.isPresent() ? parametro.get().getExpiracionMs(): 600000;
+
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		String jwt = jwtUtils.generateJwtToken(authentication);
+		String jwt = jwtUtils.generateJwtToken(authentication, expiracionMs);
 		
 		UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();		
 		List<String> roles = userDetails.getAuthorities().stream()
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
+		System.out.println("\n\n\n>>> expiracionMs: " + expiracionMs);
 		// System.out.println("\n\n\n>>> Roles: " + roles);
 
 		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), roles));
