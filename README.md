@@ -72,3 +72,21 @@ mvn spring-boot:run
 ```
 openssl rand -base64 172 | tr -d '\n'
 ```
+
+## Swagger API documentation:
+`http://localhost:8080/swagger-ui/`
+
+## Database
+### Start
+```
+cd src/main/resources
+docker-compose -f postgressql.yml up -d
+```
+### Create
+```
+docker exec resources_postgresql_1 psql -U postgres -c"CREATE DATABASE nw" 
+```
+### Delete
+```
+docker exec resources_postgresql_1 psql -U postgres -c"DROP DATABASE nw" 
+```

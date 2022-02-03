@@ -4,7 +4,6 @@
 #   Creating resources_postgresql_1 ... done
 
 # Run cmd: 
-# % docker exec resources_postgresql_1 psql -U postgres -c"CREATE DATABASE testdb" 
 # % docker exec resources_postgresql_1 psql -U postgres -c"CREATE DATABASE nw" 
 # % docker exec resources_postgresql_1 psql -U postgres -c"DROP DATABASE nw" 
 
