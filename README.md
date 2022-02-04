@@ -10,10 +10,6 @@ You can have an overview of our Spring Boot Server with the diagram below:
 
 ![spring-boot-spring-security-postgresql-jwt-authentication-architecture](spring-boot-spring-security-postgresql-jwt-authentication-architecture.png)
 
-## Refresh Token
-
-![spring-boot-refresh-token-jwt-example-flow](spring-boot-refresh-token-jwt-example-flow.png)
-
 ## Dependency
 ```xml
 <dependency>
