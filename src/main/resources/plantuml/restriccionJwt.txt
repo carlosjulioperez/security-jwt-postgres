@@ -1,0 +1,15 @@
+' https://plantuml.com/es/activity-diagram-beta
+
+@startuml
+start
+
+:Atenticar usuario;
+
+if (¿usuario.expirar_sesion?) then (yes)
+  :Leer tiempo de expiración \nde tabla parámetros;
+  :Crear token de acceso JWT;
+endif
+:Leer opciones por grupo de usuario;
+
+stop
+@enduml

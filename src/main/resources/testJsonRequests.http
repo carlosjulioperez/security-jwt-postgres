@@ -10,8 +10,8 @@ Content-Type: application/json
   "role": ["admin"]
 }
 
-### Access public resource
-GET http://localhost:8080/api/test/all
+### Access ADMIN resource
+GET http://localhost:8080/api/test/admin
 Content-Type: application/json
 
 ### Access protected resource
@@ -30,7 +30,7 @@ Content-Type: application/json
 ### Access ADMIN resource
 GET http://localhost:8080/api/test/admin
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWMiLCJpYXQiOjE2NDM5MjQzMDQsImV4cCI6MTY0MzkyNDYwNH0.1qTsdHmiD2fJb-s6LWgfWnrhgbOur2nd78nl7ckN0lbBPvE01u9Hj_8IYgiZdcH28L8hNvHtBrz8aUmhj7BIIw
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0aWMiLCJpYXQiOjE2NDM5OTI3MDAsImV4cCI6MTY0Mzk5MzAwMH0.2ujmaXrRRNdKjxTe9mVmR199acm1aLIWtciwBZgGkTenAgWfo5ixz2lYS7aF9oFd39RhUJwfbMTspr8h0K9Aqw
 
 
 
